@@ -1,16 +1,3 @@
-var row1A = document.querySelector('.x1y1');
-var row1B = document.querySelector('.x2y1');
-var row1C = document.querySelector('.x3y1');
-var row2A = document.querySelector('.x1y2');
-var row2B = document.querySelector('.x2y2');
-var row2C = document.querySelector('.x3y2');
-var row3A = document.querySelector('.x1y3');
-var row3B = document.querySelector('.x2y3');
-var row3C = document.querySelector('.x3y3');
-
-// var box = document.querySelectorAll('.box');
-
-
 var row1 = document.querySelectorAll('.row1');
 var row2 = document.querySelectorAll('.row2');
 var row3 = document.querySelectorAll('.row3');
@@ -74,10 +61,13 @@ var checking = function(elem) {
 function reset() {
   location.reload();
 }
+var boxes = document.querySelectorAll('.box');
+boxes.forEach(function(box) {
+  box.addEventListener('click', filltheBox);
+  // var i = 1;
+  // box.classList.add('box'+i);
+  // i++;
+})
 
-var boxes = [row1A,row1B,row1C,row2A,row2B,row2C,row3A,row3B,row3C];
- for (var i = 0; i < boxes.length; i++) {
-   boxes[i].addEventListener('click', filltheBox);
- }
 
 button.addEventListener('click', reset);
