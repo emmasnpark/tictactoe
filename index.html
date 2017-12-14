@@ -5,27 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Pangolin" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="players">
-    <div class="player1"><h4>Player1</h4></div>
-    <div class="player2"><h4>Player2</h4></div>
-  </div>
-  <div class="gameBlock">
-    <div class="box cross row1 a"></div>
-    <div class="box row1 b"></div>
-    <div class="box slash row1 c"></div>
-    <div class="box row2 a"></div>
-    <div class="box slash cross row2 b"></div>
-    <div class="box row2 c"></div>
-    <div class="box slash row3 a"></div>
-    <div class="box row3 b"></div>
-    <div class="box cross row3 c"></div>
+   <div class="overlay">
+     <div class="text">DRAW</div>
+   </div>
+      <div class="players">
+        <div class="winner1" style="color:white"><h1>RED WINS!</h1></div>
+        <div class="player1" data-color="red"><span class="score1">0</span></div>
+        <div><h3>ROUND</h3><span class="round">1</span></div>
+        <div class="player2" data-color="blue"><span class="score2">0</span></div>
+        <div class="winner2" style="color:white"><h1>BLUE WINS!</h1></div>
+      </div>
+      <!-- <div class="redPlayer"></div> -->
+      <div class="gameBlock">
+        <div class="box cross row1 col1"></div>
+        <div class="box row1 col2"></div>
+        <div class="box slash row1 col3"></div>
+        <div class="box row2 col1"></div>
+        <div class="box slash cross row2 col2"></div>
+        <div class="box row2 col3"></div>
+        <div class="box slash row3 col1"></div>
+        <div class="box row3 col2"></div>
+        <div class="box cross row3 col3"></div>
+      </div>
+        <!-- <div class="draw"><h1>DRAW</h1></div> -->
 
-    <button type="button">RESTART</button>
-    <span></span>
-  </div>
+
+        <div>
+        <button type="button" class="restart">RESTART</button>
+        <span class="second">0</span>
+        <button type="button" class="newGame">NEW GAME</button>
+        </div>
+
 
   <script src="index.js"></script>
 </body>

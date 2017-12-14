@@ -3,9 +3,11 @@
 }
 body {
  text-align: center;
+ font-family: 'Montserrat', sans-serif;
+ font-family: 'Pangolin', cursive;
 }
 .players {
-  width: 500px;
+  width: 800px;
   height: 100px;
   margin: auto;
   margin-bottom: 30px;
@@ -13,10 +15,14 @@ body {
   justify-content: space-around;
 }
 .player1, .player2 {
-  width: 100px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border: 1px solid black;
   margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
 }
 .player1 {
   background-color: red;
@@ -24,10 +30,14 @@ body {
 .player2 {
   background-color: blue;
 }
+h1 {
+  padding-top: 20px;
+  font-size: 35px;
+}
 .gameBlock {
   margin: auto;
   width: 500px;
-  height: 800px;
+  height: 480px;
 }
 .box {
   display: inline-block;
@@ -38,15 +48,49 @@ body {
 button {
   font-size: 35px;
   padding: 10px;
-  margin: 30px;
+  margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Pangolin', cursive;
+  background-color: yellow;
+  cursor: pointer;
+
 }
 .red {
   background-color: red;
+  pointer-events: none;
 }
 .blue {
   background-color: blue;
+    pointer-events: none;
 }
 span {
   font-size: 35px;
-  color: red;
+}
+.second {
+  color: #ffffff;
+}
+.score1, .score2 {
+  padding-top: 5px;
+}
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+.text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 250px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
 }
