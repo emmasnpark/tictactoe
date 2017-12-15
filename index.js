@@ -38,30 +38,42 @@ var numB = 0;
 var scoreForRed = 0;
 var scoreForBlue = 0;
 
-function colorSelectRed() {
+function selectColorRed() {
   startColor = player1.getAttribute('data-color');
-  console.log(startColor);
   colorNumber=1;
   return startColor;
 }
-function colorSelectBlue() {
+function selectColorBlue() {
   startColor = player2.getAttribute('data-color');
   colorNumber=2;
-  console.log(startColor);
   return startColor;
 }
 
+function timer() {
+  clearInterval(run)
+  count = 0;
+  second.textContent = count;
+
+  run = setInterval(function() {
+  count++;
+  second.textContent = count;
+  },1000)
+}
 function filltheBox(event) {
 
-    clearInterval(run)
-    count = 0;
-    second.textContent = count;
+    if(!startColor) {
+      startColor = 'red'
+    }
 
-    run = setInterval(function() {
-    count++;
-    console.log(count);
-    second.textContent = count;
-    },1000)
+    // clearInterval(run)
+    // count = 0;
+    // second.textContent = count;
+    //
+    // run = setInterval(function() {
+    // count++;
+    // second.textContent = count;
+    // },1000)
+    timer();
 
     var check1 = this.classList.contains('red');
     var check2 = this.classList.contains('blue');
@@ -163,10 +175,9 @@ function reset() {
     colorNumber=2
   }
 
-  if(startColor) {
-  player1.removeEventListener('click', colorSelectRed);
-  player2.removeEventListener('click', colorSelectBlue);
-  }
+  player1.removeEventListener('click', selectColorRed);
+  player2.removeEventListener('click', selectColorBlue);
+
 
 }
 
@@ -177,8 +188,8 @@ function reload() {
 
 restart.addEventListener('click', reset);
 newgame.addEventListener('click', reload);
-player1.addEventListener('click', colorSelectRed);
-player2.addEventListener('click', colorSelectBlue);
+player1.addEventListener('click', selectColorRed);
+player2.addEventListener('click', selectColorBlue);
 boxes.forEach(function(box) {
   box.addEventListener('click', filltheBox)});
 overlay.addEventListener('click', removeDraw);
