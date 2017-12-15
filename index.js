@@ -67,14 +67,13 @@ function timer() {
       second.textContent = count;
       if(count == time && (colorNumber % 2 == 0)) {
         numR = 3;
-        test();
+        afterClick();
       }else if(count == time && (colorNumber % 2 !== 0)) {
         numB = 3;
-        test();
+        afterClick();
       }
   },1000)
 }
-
 function filltheBox(event) {
 
     if(!startColor) {
@@ -139,7 +138,7 @@ var checking = function(elem) {
        test();
 }
 
-function test() {
+function afterClick() {
   if(numR == 3) {
     winner1.style.color = 'red';
     scoreForRed++;
