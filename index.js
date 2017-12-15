@@ -25,8 +25,11 @@ var overlay = document.querySelector('.overlay');
 var body = document.querySelector('body');
 var winner1 = document.querySelector('.winner1');
 var winner2 = document.querySelector('.winner2');
+var inputTime = document.getElementById('setTime');
+var timerBtn = document.querySelector('.smbtn');
 
 
+var time ;
 var colorNumber=1;
 var count = 0;
 var run;
@@ -49,35 +52,39 @@ function selectColorBlue() {
   return startColor;
 }
 
+timerBtn.addEventListener('click', function(event) {
+  time = inputTime.value;
+  return time;
+});
+
 function timer() {
-  clearInterval(run)
+  clearInterval(run);
   count = 0;
   second.textContent = count;
 
   run = setInterval(function() {
-  count++;
-  second.textContent = count;
+      count++;
+      second.textContent = count;
+      if(count == time && (colorNumber % 2 == 0)) {
+        numR = 3;
+        test();
+      }else if(count == time && (colorNumber % 2 !== 0)) {
+        numB = 3;
+        test();
+      }
   },1000)
 }
+
 function filltheBox(event) {
 
     if(!startColor) {
       startColor = 'red'
     }
 
-    // clearInterval(run)
-    // count = 0;
-    // second.textContent = count;
-    //
-    // run = setInterval(function() {
-    // count++;
-    // second.textContent = count;
-    // },1000)
     timer();
 
     var check1 = this.classList.contains('red');
     var check2 = this.classList.contains('blue');
-    console.log(check1);
 
     if(!check1 && !check2) {
        if(colorNumber % 2 !== 0) {
@@ -94,12 +101,13 @@ function filltheBox(event) {
 
         }
         win();
-    if(draw == 9) {
-      clearInterval(run);
-      second.textContent = 0;
-      second.style.backgroundColor = 'white';
-        overlay.style.display = "block"
-    }
+
+        if(draw == 9) {
+          clearInterval(run);
+          second.textContent = 0;
+          second.style.backgroundColor = 'white';
+            overlay.style.display = "block"
+        }
 
 }
 
@@ -109,14 +117,15 @@ function removeDraw() {
 }
 
 var matchingArr = [row1,row2,row3,col1,col2,col3,cross,slash];
+
 function win() {
 
     for (var i = 0; i < matchingArr.length; i++) {
        matchingArr[i].forEach(checking);
-           if(numR<3 || numB<3) {
-            numR=0;
-            numB=0;
-           }
+       if(numR<3 || numB<3) {
+        numR=0;
+        numB=0;
+       }
     }
 }
 
@@ -127,40 +136,44 @@ var checking = function(elem) {
       }else if(elem.classList.contains('blue')) {
         numB++;
       }
+       test();
+}
 
-      if(numR == 3) {
-        console.log(numR);
-        winner1.style.color = 'red';
-        scoreForRed++;
-        score1.textContent = scoreForRed;
-        boxes.forEach(function(box) {
-          box.removeEventListener('click', filltheBox)});
-        clearInterval(run);
-        second.textContent = 0;
-        second.style.backgroundColor = 'white';
-      }else if(numB == 3) {
-        winner2.style.color = 'blue';
-        scoreForBlue++;
-        score2.textContent = scoreForBlue;
-        boxes.forEach(function(box) {
-          box.removeEventListener('click', filltheBox)});
-          clearInterval(run)
-          second.textContent = 0;
-          second.style.backgroundColor = 'white';
-      }
+function test() {
+  if(numR == 3) {
+    winner1.style.color = 'red';
+    scoreForRed++;
+    score1.textContent = scoreForRed;
+    boxes.forEach(function(box) {
+      box.removeEventListener('click', filltheBox)});
+    clearInterval(run);
+    count = 0;
+    second.textContent = 0;
+    second.style.backgroundColor = 'white';
+  }else if(numB == 3) {
+    winner2.style.color = 'blue';
+    scoreForBlue++;
+    score2.textContent = scoreForBlue;
+    boxes.forEach(function(box) {
+      box.removeEventListener('click', filltheBox)});
+      clearInterval(run);
+      count = 0;
+      second.textContent = 0;
+      second.style.backgroundColor = 'white';
+  }
 }
 
 var roundNum = 1;
 
 function reset() {
+  numR = 0;
+  numB = 0;
   winner1.style.color = 'white';
   winner2.style.color = 'white';
   draw = 0;
   boxes.forEach(function(box) {
     box.classList.remove('red','blue')
   });
-
-  console.log(colorNumber);
   roundNum++
   round.textContent = roundNum;
   boxes.forEach(function(box) {
@@ -177,7 +190,6 @@ function reset() {
 
   player1.removeEventListener('click', selectColorRed);
   player2.removeEventListener('click', selectColorBlue);
-
 
 }
 

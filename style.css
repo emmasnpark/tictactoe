@@ -53,7 +53,11 @@ button {
   font-family: 'Pangolin', cursive;
   background-color: yellow;
   cursor: pointer;
-
+}
+.smbtn {
+    font-size: 20px;
+    padding: 0;
+    margin-left: 5px;
 }
 .red {
   background-color: red;
@@ -93,4 +97,7 @@ span {
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+}
+.setTimer {
+  height: 50px;
 }
