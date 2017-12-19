@@ -105,7 +105,7 @@ function filltheBox(event) {
           clearInterval(run);
           second.textContent = 0;
           second.style.backgroundColor = 'white';
-            overlay.style.display = "block"
+          overlay.style.display = "block"
         }
 
 }
@@ -135,7 +135,7 @@ var checking = function(elem) {
       }else if(elem.classList.contains('blue')) {
         numB++;
       }
-       test();
+       afterClick();
 }
 
 function afterClick() {
